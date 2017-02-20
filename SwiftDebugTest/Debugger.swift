@@ -10,18 +10,29 @@ import Foundation
 import Darwin.Mach
 
 typealias PThreadFunc = @convention(c) (UnsafeMutableRawPointer) -> UnsafeMutableRawPointer?
-typealias CatchMachExceptionRaise = catch_mach_exception_raise_cb
-@_silgen_name("set_catch_mach_exception_raise_cb") func set_catch_mach_exception_raise_cb(fp: CatchMachExceptionRaise)
+
+@_silgen_name("catch_mach_exception_raise") func catch_mach_exception_raise_(exception_port: mach_port_t, thread: mach_port_t, task: mach_port_t, exception: exception_type_t, code: mach_exception_data_t, codeCnt: mach_msg_type_number_t) -> kern_return_t {
+    print("reached")
+    return KERN_FAILURE
+}
 
 class Debugger {
     init() {
         func exc_thread_(p: UnsafeMutableRawPointer) -> UnsafeMutableRawPointer? {
-            return p
-        }
-        
-        func catch_mach_exception_raise_(exception_port: mach_port_t, thread: mach_port_t, task: mach_port_t, exception: exception_type_t, code: mach_exception_data_t, codeCnt: mach_msg_type_number_t) {
+            let x: @convention(c) (UnsafeMutablePointer<mach_msg_header_t>?, UnsafeMutablePointer<mach_msg_header_t>?) -> boolean_t = mach_exc_server as! @convention(c) (UnsafeMutablePointer<mach_msg_header_t>?, UnsafeMutablePointer<mach_msg_header_t>?) -> boolean_t
             
+            let exc_port: mach_port_t = p.bindMemory(to: UInt32.self, capacity: 1).pointee
+            var kr: kern_return_t = 0
+            
+            while (true) {
+                if ((mach_msg_server_once(x, 4096, exc_port, 0)) !=
+                    KERN_SUCCESS) {
+                    // error here
+                }
+            }
+            return nil;
         }
+    
         
         let exception_mask: UInt32 =
             (1 << UInt32(EXC_BAD_ACCESS))
@@ -34,21 +45,16 @@ class Debugger {
             | (1 << UInt32(EXC_MACH_SYSCALL))
             | (1 << UInt32(EXC_RPC_ALERT))
             | (1 << UInt32(EXC_CRASH))
-        
-        let exc_thread = unsafeBitCast(exc_thread_, to: PThreadFunc.self)
-        let catch_mach_exception_raise = unsafeBitCast(catch_mach_exception_raise_, to: CatchMachExceptionRaise.self)
-        
-        set_catch_mach_exception_raise_cb(catch_mach_exception_raise)
-        
+
         let self_port: mach_port_t = mach_task_self_
         var exc_port: mach_port_t = 0
         var exception_thread: pthread_t? = nil
         
         var maskCount: mach_msg_type_number_t = 1;
-        var mask: exception_mask_t? = nil
-        var handler: exception_handler_t? = nil
-        var behavior: exception_behavior_t? = nil
-        var flavor: thread_state_flavor_t? = nil
+        var mask: exception_mask_t! = exception_mask_t()
+        var handler: exception_handler_t! = exception_handler_t()
+        var behavior: exception_behavior_t! = exception_behavior_t()
+        var flavor: thread_state_flavor_t! = thread_state_flavor_t()
         
         mach_port_allocate(self_port, MACH_PORT_RIGHT_RECEIVE, &exc_port)
         
@@ -59,7 +65,7 @@ class Debugger {
                                mach_msg_type_name_t(MACH_MSG_TYPE_MAKE_SEND))
         
         
-        pthread_create(&exception_thread, nil, exc_thread,
+        pthread_create(&exception_thread, nil, exc_thread_,
                        &exc_port)
         
         task_set_exception_ports(self_port, (UInt32(1) << UInt32(EXC_BREAKPOINT)), exc_port,

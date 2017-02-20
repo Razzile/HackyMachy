@@ -8,8 +8,11 @@
 
 import Foundation
 
-let breakpoint = Breakpoint(0x12345, .x64)
-breakpoint.install()
+
+let x = Debugger()
+
+breakpoint()
+
 
 
 
