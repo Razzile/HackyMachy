@@ -8,5 +8,8 @@
 
 import Foundation
 
-print("Hello, World!")
+let breakpoint = Breakpoint(0x12345, .x64)
+breakpoint.install()
+
+
 
