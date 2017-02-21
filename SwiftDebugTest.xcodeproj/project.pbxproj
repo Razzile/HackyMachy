@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		F27C20571E58A02A00E86B45 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27C20561E58A02A00E86B45 /* main.swift */; };
 		F27C205E1E58A04C00E86B45 /* Breakpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27C205D1E58A04C00E86B45 /* Breakpoint.swift */; };
-		F27C20631E5B071D00E86B45 /* mach_excServer.c in Sources */ = {isa = PBXBuildFile; fileRef = F27C20611E5B071D00E86B45 /* mach_excServer.c */; };
-		F27C20641E5B071D00E86B45 /* mach_excUser.c in Sources */ = {isa = PBXBuildFile; fileRef = F27C20621E5B071D00E86B45 /* mach_excUser.c */; };
 		F27C20661E5B1CC800E86B45 /* Debugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27C20651E5B1CC800E86B45 /* Debugger.swift */; };
 		F27C206B1E5B27A000E86B45 /* mach_excImpl.c in Sources */ = {isa = PBXBuildFile; fileRef = F27C206A1E5B27A000E86B45 /* mach_excImpl.c */; };
 /* End PBXBuildFile section */
@@ -32,9 +30,6 @@
 		F27C20561E58A02A00E86B45 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		F27C205D1E58A04C00E86B45 /* Breakpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Breakpoint.swift; sourceTree = "<group>"; };
 		F27C205F1E5B071D00E86B45 /* SwiftDebugTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftDebugTest-Bridging-Header.h"; sourceTree = "<group>"; };
-		F27C20601E5B071D00E86B45 /* mach_exc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mach_exc.h; path = ../../MasterLib/src/mach_exc.h; sourceTree = "<group>"; };
-		F27C20611E5B071D00E86B45 /* mach_excServer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mach_excServer.c; path = ../../MasterLib/src/mach_excServer.c; sourceTree = "<group>"; };
-		F27C20621E5B071D00E86B45 /* mach_excUser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mach_excUser.c; path = ../../MasterLib/src/mach_excUser.c; sourceTree = "<group>"; };
 		F27C20651E5B1CC800E86B45 /* Debugger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debugger.swift; sourceTree = "<group>"; };
 		F27C206A1E5B27A000E86B45 /* mach_excImpl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mach_excImpl.c; sourceTree = "<group>"; };
 		F27C206C1E5B2BA100E86B45 /* mach_excImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mach_excImpl.h; sourceTree = "<group>"; };
@@ -72,9 +67,6 @@
 			children = (
 				F27C20561E58A02A00E86B45 /* main.swift */,
 				F27C205D1E58A04C00E86B45 /* Breakpoint.swift */,
-				F27C20601E5B071D00E86B45 /* mach_exc.h */,
-				F27C20611E5B071D00E86B45 /* mach_excServer.c */,
-				F27C20621E5B071D00E86B45 /* mach_excUser.c */,
 				F27C205F1E5B071D00E86B45 /* SwiftDebugTest-Bridging-Header.h */,
 				F27C20651E5B1CC800E86B45 /* Debugger.swift */,
 				F27C206A1E5B27A000E86B45 /* mach_excImpl.c */,
@@ -143,8 +135,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F27C205E1E58A04C00E86B45 /* Breakpoint.swift in Sources */,
-				F27C20631E5B071D00E86B45 /* mach_excServer.c in Sources */,
-				F27C20641E5B071D00E86B45 /* mach_excUser.c in Sources */,
 				F27C206B1E5B27A000E86B45 /* mach_excImpl.c in Sources */,
 				F27C20661E5B1CC800E86B45 /* Debugger.swift in Sources */,
 				F27C20571E58A02A00E86B45 /* main.swift in Sources */,
@@ -247,6 +237,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_MODULES = YES;
+				GCC_OPTIMIZATION_LEVEL = fast;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";

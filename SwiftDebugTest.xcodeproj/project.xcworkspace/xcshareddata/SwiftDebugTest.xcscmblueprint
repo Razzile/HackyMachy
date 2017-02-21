@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "7BDB01EFDECE502E62F7BDBF0BAD2955DA8F119E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "7BDB01EFDECE502E62F7BDBF0BAD2955DA8F119E" : 9223372036854775807,
+    "3A847B08AE68E6B8127BE4A340791F45B38A6F91" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "AB4CF9DA-0375-4CF4-BEAE-ADC96D90B6FD",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "7BDB01EFDECE502E62F7BDBF0BAD2955DA8F119E" : "SwiftDebugTest\/",
+    "3A847B08AE68E6B8127BE4A340791F45B38A6F91" : "MasterLib\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SwiftDebugTest",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "SwiftDebugTest.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Ghetto-Solutions-Inc\/MasterLib",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3A847B08AE68E6B8127BE4A340791F45B38A6F91"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Razzile\/HackyMachy.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7BDB01EFDECE502E62F7BDBF0BAD2955DA8F119E"
+    }
+  ]
+}
