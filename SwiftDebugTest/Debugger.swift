@@ -19,7 +19,7 @@ typealias PThreadFunc = @convention(c) (UnsafeMutableRawPointer) -> UnsafeMutabl
 class Debugger {
     init() {
         func exc_thread_(p: UnsafeMutableRawPointer) -> UnsafeMutableRawPointer? {
-            let x: @convention(c) (UnsafeMutablePointer<mach_msg_header_t>?, UnsafeMutablePointer<mach_msg_header_t>?) -> boolean_t = mach_exc_server as! @convention(c) (UnsafeMutablePointer<mach_msg_header_t>?, UnsafeMutablePointer<mach_msg_header_t>?) -> boolean_t
+            let x: @convention(c) (UnsafeMutablePointer<mach_msg_header_t>?, UnsafeMutablePointer<mach_msg_header_t>?) -> boolean_t = { mach_exc_server($0, $1) }
             
             let exc_port: mach_port_t = p.bindMemory(to: UInt32.self, capacity: 1).pointee
             var kr: kern_return_t = 0
